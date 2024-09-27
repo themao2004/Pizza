@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap'); /* Nhập font Poppins */
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lora', serif;
+}
+
+.card-title {
+  font-family: 'Lora', serif;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center; /* Căn giữa chữ theo chiều dọc */
+  margin-bottom: 0; /* Đảm bảo không có khoảng cách thừa */
+}
+
+.navbar-nav {
+  align-items: center; /* Đảm bảo các mục trong navbar cũng căn giữa theo chiều dọc */
+}
+
+.navbar-dark {
+  background-color: #333;
+}
+
+.carousel-inner img {
+  height: 500px;
+  object-fit: cover;
+}
+
+.full-width {
+  width: 100%;
+  display: block; 
+  color: #333;
+}
+
+.image-container {
+  position: relative;
+}
+
+.badge-sell {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgb(233, 175, 1);
+  color: white;
+  padding: 5px 30px;
+  font-size: 16px; /* Chỉnh kích thước font chữ */
+  font-weight: 600; /* Đậm nét nhưng không quá nặng */
+  font-family: 'Poppins', sans-serif; /* Font chữ Poppins */
+  border-radius: 2px;
+  z-index: 10;
+  text-transform: uppercase; /* Viết hoa toàn bộ */
+  letter-spacing: 1px; /* Tăng khoảng cách giữa các ký tự */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Thêm bóng chữ */
+
+}
+
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.w-20 {
+  width: 20%;
+}
