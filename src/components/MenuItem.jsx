@@ -1,4 +1,4 @@
-const MenuItem = ({ items = [] }) => {
+const MenuItem = ({ items = [], addToCart }) => {
   return (
     <>
       {items.map((item) => (
@@ -14,7 +14,10 @@ const MenuItem = ({ items = [] }) => {
                 {item.originalPrice && <del>${item.originalPrice}</del>} $
                 {item.price}
               </p>
-              <button className="btn btn-warning full-width bg-black text-white">
+              <button
+                className="btn btn-warning full-width bg-black text-white"
+                onClick={() => addToCart(item)}
+              >
                 Buy
               </button>
             </div>

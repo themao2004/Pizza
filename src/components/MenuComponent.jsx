@@ -1,6 +1,7 @@
 import MenuItem from "./MenuItem";
 
-const MenuComponent = () => {
+
+const MenuComponent = ({ addToCart }) => {
   const items = [
     {
       id: 1,
@@ -8,28 +9,34 @@ const MenuComponent = () => {
       title: "Margherita Pizza",
       originalPrice: 40.99,
       price: 24.344,
-      badge: "Sell",
+      badge: "",
     },
+    
     {
       id: 2,
       image: "./imges/menu2.jpg",
-      title: "Mushroom Pizza",
-      price: 25.99,
+      title: "Chan ga xot thai",
+      originalPrice: 50.99,
+      price: 24.344,
+      bade: "",
     },
+
     {
       id: 3,
-      image: "./imges/menu3.jpg",
-      title: "Hawaiian Pizza",
-      price: 30.777,
-      badge: "New",
+      image: "./imges/boDatVang.jpg",
+      title: "Bo Dat Vang",
+      originalPrice: 49.99,
+      price: 29.99,
+      bade: "",
     },
+
     {
       id: 4,
-      image: "./imges/menu4.jpg",
-      title: "Pesto Pizza",
-      originalPrice: 50.999,
-      price: 36.889,
-      badge: "Sale",
+      image: "./imges/lauGaBinhThuan.jpg",
+      title: "Lau ga binh thuan",
+      originalPrice: 120.99,
+      price: 100.344,
+      bade: "",
     },
   ];
 
@@ -38,7 +45,7 @@ const MenuComponent = () => {
       <section className="container px-5">
         <h2 className="text-left mb-4">Our Menu</h2>
         <div className="row g-4 justify-content-center">
-          <MenuItem items={items} />
+          <MenuItem items={items} addToCart={addToCart} />
         </div>
       </section>
     </div>

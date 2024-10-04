@@ -1,0 +1,14 @@
+.navbar {
+    background-color: #333; // Thêm màu nền tối để tránh màu trắng
+    color: white; // Chuyển màu chữ sang màu trắng
+  
+    .navbar-brand {
+      color: white !important;
+    }
+  
+    .btn-danger {
+      background-color: red;
+      border-color: red;
+    }
+  }
+  
