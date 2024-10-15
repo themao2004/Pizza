@@ -55,6 +55,7 @@ function App() {
         removeItem={removeItem}
         show={showCart}
         handleClose={closeCart}
+        setCartItems={setCartItems} // Truyền setCartItems vào CartPopupComponent
       />
     </>
   );
