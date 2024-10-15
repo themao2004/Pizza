@@ -1,44 +1,33 @@
+import React, { useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
 
-
 const MenuComponent = ({ addToCart }) => {
-  const items = [
-    {
-      id: 1,
-      image: "./imges/menu1.jpg",
-      title: "Margherita Pizza",
-      originalPrice: 40.99,
-      price: 24.344,
-      badge: "",
-    },
-    
-    {
-      id: 2,
-      image: "./imges/menu2.jpg",
-      title: "Chan ga xot thai",
-      originalPrice: 50.99,
-      price: 24.344,
-      bade: "",
-    },
+  const [items, setItems] = useState([]); // Khởi tạo state cho items
 
-    {
-      id: 3,
-      image: "./imges/boDatVang.jpg",
-      title: "Bo Dat Vang",
-      originalPrice: 49.99,
-      price: 29.99,
-      bade: "",
-    },
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await fetch("https://api-demo-4gqb.onrender.com/products");
+        const data = await response.json();
+        
+        // Chuyển đổi dữ liệu về định dạng mà MenuItem yêu cầu
+        const formattedItems = data.data.map(item => ({
+          id: item.id,
+          image: item.image,
+          title: item.title,
+          originalPrice: item.price, // Sử dụng giá gốc từ API
+          price: item.salePrice || item.price, // Sử dụng giá khuyến mãi nếu có, ngược lại sử dụng giá gốc
+          badge: "", // Nếu cần có thể thêm logic cho badge
+        }));
 
-    {
-      id: 4,
-      image: "./imges/lauGaBinhThuan.jpg",
-      title: "Lau ga binh thuan",
-      originalPrice: 120.99,
-      price: 100.344,
-      bade: "",
-    },
-  ];
+        setItems(formattedItems); // Cập nhật state với dữ liệu từ API
+      } catch (error) {
+        console.error("Failed to fetch items:", error); // Xử lý lỗi
+      }
+    };
+
+    fetchItems(); // Gọi hàm fetchItems khi component mount
+  }, []); // [] để chỉ chạy 1 lần khi component mount
 
   return (
     <div className="bg-dark text-white py-5">

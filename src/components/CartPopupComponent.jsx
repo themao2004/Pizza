@@ -7,6 +7,12 @@ const CartPopupComponent = ({
   show,
   handleClose,
 }) => {
+  // Tính tổng giá tiền
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -14,26 +20,32 @@ const CartPopupComponent = ({
       </Modal.Header>
       <Modal.Body>
         {cartItems.length > 0 ? (
-          cartItems.map((item) => (
-            <div key={item.id} className="d-flex justify-content-between align-items-center mb-3">
-              <div>
-                <h5>{item.title}</h5>
-                <p>${item.price}</p>
+          <>
+            {cartItems.map((item) => (
+              <div key={item.id} className="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <h5>{item.title}</h5>
+                  <p>${item.price}</p>
+                </div>
+                <div className="d-flex align-items-center">
+                  <Button onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</Button>
+                  <span className="mx-2">{item.quantity}</span>
+                  <Button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</Button>
+                  <Button
+                    variant="danger"
+                    className="ms-3"
+                    onClick={() => removeItem(item.id)}
+                  >
+                    Remove
+                  </Button>
+                </div>
               </div>
-              <div className="d-flex align-items-center">
-                <Button onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</Button>
-                <span className="mx-2">{item.quantity}</span>
-                <Button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</Button>
-                <Button
-                  variant="danger"
-                  className="ms-3"
-                  onClick={() => removeItem(item.id)}
-                >
-                  Remove
-                </Button>
-              </div>
+            ))}
+            {/* Thẻ div hiển thị tổng giá tiền */}
+            <div className="mt-3">
+              <h5>Total Price: ${totalPrice.toFixed(2)}</h5>
             </div>
-          ))
+          </>
         ) : (
           <p>No items in cart.</p>
         )}
